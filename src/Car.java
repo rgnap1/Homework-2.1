@@ -1,12 +1,12 @@
 import java.util.Objects;
 
 public class Car {
-    String brand;
-    String model;
-    double engineVolume;
-    String color;
-    int year;
-    String country;
+   private String brand;
+   private String model;
+   private double engineVolume;
+   private String color;
+   private int year;
+   private String country;
 
     Car(String brand, String model, double engineVolume, String color, int year, String country){
         this.brand = (brand == null || brand == "" ? "default" : brand);
