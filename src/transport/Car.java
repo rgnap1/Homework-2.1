@@ -1,27 +1,20 @@
 package transport;
 import java.util.Objects;
 import java.time.LocalDate;
-public class Car {
-   final String brand;
-   final String model;
+public class Car extends Transport {
    private double engineVolume;
    private String color;
-   final int year;
-   final String country;
    private String transmission;
-   final String bodyType;
+   private final String bodyType;
    private int registrationNumber;
-   final int numberOfSeats;
+   private final int numberOfSeats;
    private boolean rubberWinter;
-   Key key;
+   private Key key;
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean rubberWinter,boolean remoteEngineStart, boolean keylessEntry){
-        this.brand = (brand == null || brand.isBlank() ? "default" : brand);
-        this.model = (model == null || model.isBlank() ? "default" : model);
+    public Car(String brand, String model, double engineVolume, String color, int maxSpeed, String transmission, String bodyType, int year, String country, String bodyColor, int registrationNumber, int numberOfSeats, boolean rubberWinter,boolean remoteEngineStart, boolean keylessEntry){
+        super(brand,model,year,country,bodyColor,maxSpeed);
         this.engineVolume = (engineVolume < 0 || engineVolume == 0 ? 1.5 : engineVolume);
         this.color = (color == null || color.isBlank() ? "белый" : color);
-        this.year = (year < 0 || year == 0 ? 2000 : year);
-        this.country = (country == null || country.isBlank() ? "default" : country);
         this.transmission = (transmission == null || transmission.isBlank() ? "default" : transmission);
         this.bodyType = (bodyType == null || bodyType.isBlank() ? "default" : bodyType);
         this.registrationNumber = (registrationNumber <= 0 ? 1111111111 : registrationNumber);
@@ -29,6 +22,7 @@ public class Car {
         this.rubberWinter = rubberWinter;
         key = new Key(remoteEngineStart, keylessEntry);
     }
+
     private class Key{
         final private boolean remoteEngineStart;
         final private boolean keylessEntry;
@@ -45,12 +39,6 @@ public class Car {
         }
     }
 
-    public String getBrand() {
-        return brand;
-    }
-    public String getModel() {
-        return model;
-    }
     public double getEngineVolume() {
         return engineVolume;
     }
@@ -62,12 +50,6 @@ public class Car {
     }
     public void setColor(String color) {
         this.color = color;
-    }
-    public int getYear() {
-        return year;
-    }
-    public String getCountry() {
-        return country;
     }
     public String getTransmission() {
         return transmission;
@@ -102,13 +84,10 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
+        return super.toString()+ ", " +
+                "Car{" +
                 ", engineVolume=" + engineVolume +
                 ", color='" + color + '\'' +
-                ", year=" + year +
-                ", country='" + country + '\'' +
                 ", transmission='" + transmission + '\'' +
                 ", bodyType='" + bodyType + '\'' +
                 ", registrationNumber=" + registrationNumber +
@@ -124,11 +103,11 @@ public class Car {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
         Car car = (Car) o;
-        return Double.compare(car.getEngineVolume(), getEngineVolume()) == 0 && getYear() == car.getYear() && getRegistrationNumber() == car.getRegistrationNumber() && getNumberOfSeats() == car.getNumberOfSeats() && getRubberWinter() == car.getRubberWinter() && getBrand().equals(car.getBrand()) && getModel().equals(car.getModel()) && getColor().equals(car.getColor()) && getCountry().equals(car.getCountry()) && getTransmission().equals(car.getTransmission()) && getBodyType().equals(car.getBodyType());
+        return Double.compare(car.getEngineVolume(), getEngineVolume()) == 0 && getRegistrationNumber() == car.getRegistrationNumber() && getNumberOfSeats() == car.getNumberOfSeats() && getRubberWinter() == car.getRubberWinter() &&  getColor().equals(car.getColor()) && getTransmission().equals(car.getTransmission()) && getBodyType().equals(car.getBodyType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBrand(), getModel(), getEngineVolume(), getColor(), getYear(), getCountry(), getTransmission(), getBodyType(), getRegistrationNumber(), getNumberOfSeats(), getRubberWinter());
+        return super.hashCode() +  Objects.hash( getEngineVolume(), getColor(), getTransmission(), getBodyType(), getRegistrationNumber(), getNumberOfSeats(), getRubberWinter());
     }
 }
