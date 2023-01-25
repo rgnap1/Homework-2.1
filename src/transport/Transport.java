@@ -2,83 +2,50 @@ package transport;
 
 import java.util.Objects;
 
-public class Transport {
+public abstract class Transport <T extends Driver> implements Competing{
     private final String brand;
     private final String model;
-    private final int year;
-    private final String country;
-    private String bodyColor;
-    private int maxSpeed;
+    private double engineVolume1;
+    private T driver;
 
-    public Transport(String brand, String model, int year, String country, String bodyColor, int maxSpeed) {
+
+    public Transport(String brand, String model, double engineVolume1, T driver) {
         this.brand = (brand == null || brand.isBlank() ? "default" : brand);
         this.model = (model == null || model.isBlank() ? "default" : model);
-        this.year = (year < 0 || year == 0 ? 2000 : year);
-        this.country = (country == null || country.isBlank() ? "default" : country);
-        setBodyColor(bodyColor);
-        setMaxSpeed(maxSpeed);
+        this.engineVolume1 = (engineVolume1  < 0 || engineVolume1 == 0 ? 3 : engineVolume1);
+        setDriver(driver);
     }
 
     public String getBrand() {
         return brand;
     }
-
-    public void setBrand(String brand) {
-        brand = brand;
-    }
-
     public String getModel() {
         return model;
     }
-
-    public void setModel(String model) {
-        model = model;
+    public double getEngineVolume1() {
+        return engineVolume1;
+    }
+    public void setEngineVolume1(double engineVolume1) {
+        this.engineVolume1 = engineVolume1;
     }
 
-    public int getYear() {
-        return year;
+    public T getDriver() {
+        return driver;
     }
 
-    public void setYear(int year) {
-        year = year;
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        country = country;
-    }
-
-    public String getBodyColor() {
-        return bodyColor;
-    }
-
-    public void setBodyColor(String bodyColor) {
-        this.bodyColor = (bodyColor == null || bodyColor.isBlank() ? "белый" : bodyColor);
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed<=0){
-            maxSpeed = 120;
-        }
-        this.maxSpeed = maxSpeed;
-    }
+    public abstract void startMove();
+    public abstract void finishMove();
 
     @Override
     public String toString() {
         return "Transport{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", year=" + year +
-                ", country='" + country + '\'' +
-                ", bodyColor='" + bodyColor + '\'' +
-                ", maxSpeed=" + maxSpeed +
+                ", engineVolume=" + engineVolume1 +
                 '}';
     }
 
@@ -87,11 +54,11 @@ public class Transport {
         if (this == o) return true;
         if (!(o instanceof Transport)) return false;
         Transport transport = (Transport) o;
-        return getYear() == transport.getYear() && getMaxSpeed() == transport.getMaxSpeed() && getBrand().equals(transport.getBrand()) && getModel().equals(transport.getModel()) && getCountry().equals(transport.getCountry()) && getBodyColor().equals(transport.getBodyColor());
+        return Double.compare(transport.getEngineVolume1(), getEngineVolume1()) == 0 && getBrand().equals(transport.getBrand()) && getModel().equals(transport.getModel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBrand(), getModel(), getYear(), getCountry(), getBodyColor(), getMaxSpeed());
+        return Objects.hash(getBrand(), getModel(), getEngineVolume1());
     }
 }

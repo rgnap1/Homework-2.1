@@ -1,38 +1,40 @@
-import transport.Bus;
-import transport.Car;
+import transport.*;
+
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car("Lada","Granta",1.7,"желтый",-160,"автомат","тип кузова",2015,"Россия","белый",422,4,false,true,true);
-        Car car2 = new Car("Audi","A8 50 L TDI quattro",3.0,"черный",160,"автомат","тип кузова",2020,"Германия","белый",8523,4,true,true,true);
-        Car car3 = new Car("BMW","Z8",3.0,"черный",160,"автомат","тип кузова",2021,"Германия","черный",865,4,true,true,true);
-        Car car4 = new Car("KIA","Sportage 4",2.4,"красный",170,"автомат","тип кузова",2018,"Южная Корея","черный",1111132,4,true,true,true);
-        Car car5 = new Car("Hyundai","Avante",1.6,"оранжевый",220,"механика","тип кузова",2016,"Южная Корея","черный",78523,4,true,true,true);
-        System.out.println(car1.toString());
-        System.out.println(car2.toString());
-        System.out.println(car3.toString());
-        System.out.println(car4.toString());
-        System.out.println(car5.toString());
+        for (int i = 1; i <= 3; i++){
+            DriverB driverB = new DriverB("Driver cat.B №" + i,true,5 + i);
+            Car car = new Car(
+                    "Car brand №" + i,
+                    "Car model №" + i,
+                    1.6,
+                    driverB
 
-        Bus bus1 = new Bus("ВАЗ","А90",160,2015,"Россия","желтый");
-        System.out.println(bus1.toString());
-        for (int i = 1; i <= 2; i++){
+            );
+            DriverC driverC = new DriverC("Driver cat.C №" + i, true, 5 + i);
+            Truck truck = new Truck(
+                    "Truck brand №" + i,
+                    "Truck model №" + i,
+                    2.4,
+                    driverC
+
+            );
+            DriverD driverD = new DriverD("Driver cat.D №" + i,true,5 + i);
             Bus bus = new Bus(
                     "Bus brand №" + i,
                     "Bus model №" + i,
-                    180,
-                    2020 + i,
-                    "Россия",
-                    "желтый"
+                    3.0,
+                    driverD
+
             );
-            System.out.println(bus);
+            printInfo(car);
+            printInfo(truck);
+            printInfo(bus);
+
         }
 
-
-
-
-
-
-
-
+    }
+    private static void printInfo(Transport<?> transport){
+        System.out.println("водитель " + transport.getDriver().getName()+ " управляет автомобилем " + transport.getBrand()+ " Б и будет учавствовать в заезде");
     }
 }
