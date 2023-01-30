@@ -1,9 +1,11 @@
 package transport;
 
 public class Truck extends Transport<DriverC>{
+    private LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume1, DriverC driver) {
+    public Truck(String brand, String model, double engineVolume1, DriverC driver,LoadCapacity loadCapacity) {
         super(brand, model, engineVolume1, driver);
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -13,6 +15,12 @@ public class Truck extends Transport<DriverC>{
     @Override
     public void finishMove(){
         System.out.println("Грузовик марки " + getBrand() + "закончил движение");
+    }
+    @Override
+    public void printType(){
+        if (loadCapacity == null){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
     @Override
     public void pitstop(){

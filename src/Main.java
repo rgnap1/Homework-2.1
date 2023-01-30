@@ -8,7 +8,8 @@ public class Main {
                     "Car brand №" + i,
                     "Car model №" + i,
                     1.6,
-                    driverB
+                    driverB,
+                    Type.SEDAN
 
             );
             DriverC driverC = new DriverC("Driver cat.C №" + i, true, 5 + i);
@@ -16,7 +17,9 @@ public class Main {
                     "Truck brand №" + i,
                     "Truck model №" + i,
                     2.4,
-                    driverC
+                    driverC,
+                    LoadCapacity.getValue(50)
+
 
             );
             DriverD driverD = new DriverD("Driver cat.D №" + i,true,5 + i);
@@ -24,16 +27,19 @@ public class Main {
                     "Bus brand №" + i,
                     "Bus model №" + i,
                     3.0,
-                    driverD
+                    driverD,
+                    Size.getValue(60)
 
             );
             printInfo(car);
             printInfo(truck);
             printInfo(bus);
+            car.toString();
 
         }
 
     }
+
     private static void printInfo(Transport<?> transport){
         System.out.println("водитель " + transport.getDriver().getName()+ " управляет автомобилем " + transport.getBrand()+ " Б и будет учавствовать в заезде");
     }

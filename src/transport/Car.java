@@ -2,9 +2,11 @@ package transport;
 import java.util.Objects;
 import java.time.LocalDate;
 public class Car extends Transport <DriverB>{
+    private Type type;
 
-    public Car(String brand, String model, double engineVolume1, DriverB driver) {
+    public Car(String brand, String model, double engineVolume1, DriverB driver,Type type) {
         super(brand, model, engineVolume1, driver);
+        this.type = type;
     }
 
     @Override
@@ -14,6 +16,12 @@ public class Car extends Transport <DriverB>{
     @Override
     public void finishMove(){
         System.out.println("Автомобиль марки " + getBrand() + "закончил движение");
+    }
+    @Override
+    public void printType(){
+        if (type == null){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
     @Override
     public void pitstop(){
@@ -34,5 +42,10 @@ public class Car extends Transport <DriverB>{
         System.out.println("Максимальная скорость автомобиля" + maxSpeed);
     }
 
-
+    @Override
+    public String toString() {
+        return "Car{" +
+                "type=" + type +
+                '}';
+    }
 }
