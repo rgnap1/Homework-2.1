@@ -22,6 +22,13 @@ public class Bus extends Transport <DriverD>{
             System.out.println("Данных по транспортному средству недостаточно");
         }
     }
+
+    @Override
+    public boolean goDiagnostics() {
+        throw new TransportTypeException("Автобусы диагностику проходить не должны!");
+
+    }
+
     @Override
     public void pitstop(){
         System.out.println("Пит-стоп автобуса");

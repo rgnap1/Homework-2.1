@@ -1,6 +1,5 @@
 package transport;
-import java.util.Objects;
-import java.time.LocalDate;
+
 public class Car extends Transport <DriverB>{
     private Type type;
 
@@ -22,6 +21,10 @@ public class Car extends Transport <DriverB>{
         if (type == null){
             System.out.println("Данных по транспортному средству недостаточно");
         }
+    }
+    @Override
+    public boolean goDiagnostics(){
+        return passedDiagnostic();
     }
     @Override
     public void pitstop(){

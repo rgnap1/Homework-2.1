@@ -23,6 +23,10 @@ public class Truck extends Transport<DriverC>{
         }
     }
     @Override
+    public boolean goDiagnostics(){
+        return passedDiagnostic();
+    }
+    @Override
     public void pitstop(){
         System.out.println("Пит-стоп грузовика");
     }

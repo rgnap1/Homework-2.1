@@ -35,8 +35,13 @@ public class Main {
             printInfo(truck);
             printInfo(bus);
             car.toString();
+            Truck.passedDiagnostic();
+            Car.passedDiagnostic();
+            bus.goDiagnostics();
 
         }
+
+
 
     }
 
