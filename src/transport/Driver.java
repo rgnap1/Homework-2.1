@@ -40,4 +40,12 @@ public abstract class Driver {
     public abstract void finishMove();
     public abstract void refill();
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", hasDriverLicense=" + hasDriverLicense +
+                ", experienceInYear=" + experienceInYear +
+                '}';
+    }
 }

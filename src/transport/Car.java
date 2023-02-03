@@ -23,12 +23,8 @@ public class Car extends Transport <DriverB>{
         }
     }
     @Override
-    public boolean goDiagnostics() throws TransportTypeException{
-        if (getDriver().getClass() != this.getDriver().getClass()){
-            throw new TransportTypeException ("Введите корректный тип транспортного средства");
-        }else {
-            return true;
-        }
+    public void goDiagnostics() {
+        System.out.println("Машины проходят диагностику");
     }
     @Override
     public void pitstop(){

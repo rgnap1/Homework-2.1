@@ -24,11 +24,11 @@ public class Bus extends Transport <DriverD>{
     }
 
     @Override
-    public boolean goDiagnostics() throws TransportTypeException{
-        if (getDriver().getClass() == this.getDriver().getClass()){
-            throw new TransportTypeException ("Автобусы диагностику проходить не должны!");
-        }else {
-            return true;
+    public  void goDiagnostics() {
+        try{
+            throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
+        } catch (TransportTypeException e){
+            System.err.println(e.getMessage());
         }
     }
 
