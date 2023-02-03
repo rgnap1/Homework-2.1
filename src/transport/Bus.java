@@ -3,8 +3,8 @@ package transport;
 public class Bus extends Transport <DriverD>{
     private Size size;
 
-    public Bus(String brand, String model, double engineVolume1, DriverD driver, Size size) {
-        super(brand, model, engineVolume1, driver);
+    public Bus(String brand, String model, double engineVolume1, DriverD driver, Size size, Mechanic mechanic) {
+        super(brand, model, engineVolume1, driver, mechanic);
         this.size = size;
     }
 
@@ -24,9 +24,12 @@ public class Bus extends Transport <DriverD>{
     }
 
     @Override
-    public boolean goDiagnostics() {
-        throw new TransportTypeException("Автобусы диагностику проходить не должны!");
-
+    public boolean goDiagnostics() throws TransportTypeException{
+        if (getDriver().getClass() == this.getDriver().getClass()){
+            throw new TransportTypeException ("Автобусы диагностику проходить не должны!");
+        }else {
+            return true;
+        }
     }
 
     @Override

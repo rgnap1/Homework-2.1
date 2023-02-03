@@ -3,8 +3,8 @@ package transport;
 public class Truck extends Transport<DriverC>{
     private LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume1, DriverC driver,LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume1, driver);
+    public Truck(String brand, String model, double engineVolume1, DriverC driver,LoadCapacity loadCapacity,Mechanic mechanic) {
+        super(brand, model, engineVolume1, driver, mechanic);
         this.loadCapacity = loadCapacity;
     }
 
@@ -23,8 +23,12 @@ public class Truck extends Transport<DriverC>{
         }
     }
     @Override
-    public boolean goDiagnostics(){
-        return passedDiagnostic();
+    public boolean goDiagnostics() throws TransportTypeException{
+        if (getDriver().getClass() != this.getDriver().getClass()){
+            throw new TransportTypeException ("Введите корректный тип транспортного средства");
+        }else {
+            return true;
+        }
     }
     @Override
     public void pitstop(){
