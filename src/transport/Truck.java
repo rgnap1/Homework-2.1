@@ -22,6 +22,7 @@ public class Truck extends Transport<DriverC>{
             System.out.println("Данных по транспортному средству недостаточно");
         }
     }
+
     @Override
     public void goDiagnostics() {
         System.out.println("Грузовики проходят диагностику");

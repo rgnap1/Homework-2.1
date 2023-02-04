@@ -23,6 +23,7 @@ public class Bus extends Transport <DriverD>{
         }
     }
 
+
     @Override
     public  void goDiagnostics(){
         throw new TransportTypeException("Это транспортное средство не проходит диагностику!");
