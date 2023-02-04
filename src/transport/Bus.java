@@ -24,12 +24,8 @@ public class Bus extends Transport <DriverD>{
     }
 
     @Override
-    public  void goDiagnostics() {
-        try{
-            throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
-        } catch (TransportTypeException e){
-            System.err.println(e.getMessage());
-        }
+    public  void goDiagnostics(){
+        throw new TransportTypeException("Это транспортное средство не проходит диагностику!");
     }
 
     @Override
