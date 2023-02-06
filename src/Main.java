@@ -1,13 +1,19 @@
 import transport.*;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
         for (int i = 1; i <= 3; i++) {
+            Mechanic mechanic7 = new Mechanic("Ждун", "Yandex Taxi");
+            Mechanic mechanic8 = new Mechanic("Кпустянка", "Get Taxi");
+            Mechanic mechanic9 = new Mechanic("Пчёлка", "ГРУЗОВИЧКОФФ");
+
+            List<Mechanic> mechanics = new ArrayList<>();
+            mechanics.add(mechanic7);
+            mechanics.add(mechanic8);
+            mechanics.add(mechanic9);
             DriverB driverB = new DriverB("Driver cat.B №" + i, true, 5 + i);
             Car car = new Car(
                     "Car brand №" + i,
@@ -15,7 +21,7 @@ public class Main {
                     1.6,
                     driverB,
                     Type.SEDAN,
-                    new Mechanic("Арбузиков", "Yandex Taxi")
+                    mechanics
 
             );
             DriverC driverC = new DriverC("Driver cat.C №" + i, true, 5 + i);
@@ -25,7 +31,7 @@ public class Main {
                     2.4,
                     driverC,
                     LoadCapacity.getValue(50),
-                    new Mechanic("Рябчиков", "Get Taxi")
+                    mechanics
 
 
             );
@@ -36,6 +42,8 @@ public class Main {
                     3.0,
                     driverD,
                     Size.getValue(60),
+                    mechanics
+
 
 
             );
@@ -72,12 +80,12 @@ public class Main {
             System.out.println(mechanic);
         }
 
-        Transport bus1 = new Bus("bus1", "bus1", 6.0, driverD1, Size.MIDDLE,);
-        Transport bus2 = new Bus("bus2", "bus2", 7.4, driverD2, Size.SUPER_BIG,);
-        Transport сar1 = new Car("car1", "car1", 3.5, driverB1, Type.CROSSOVER, );
-        Transport car2 = new Car("car2", "car2", 2.6, driverB2, Type.SEDAN, );
-        Transport truck1 = new Truck("truck1", "truck1", 6.0, driverC1, LoadCapacity.N2, );
-        Transport truck2 = new Truck("truck2", "truck2", 5.8, driverC2, LoadCapacity.N1, );
+        Transport bus1 = new Bus("bus1", "bus1", 6.0, driverD1, Size.MIDDLE,mechanics);
+        Transport bus2 = new Bus("bus2", "bus2", 7.4, driverD2, Size.SUPER_BIG,mechanics);
+        Transport сar1 = new Car("car1", "car1", 3.5, driverB1, Type.CROSSOVER,mechanics);
+        Transport car2 = new Car("car2", "car2", 2.6, driverB2, Type.SEDAN,mechanics);
+        Transport truck1 = new Truck("truck1", "truck1", 6.0, driverC1, LoadCapacity.N2,mechanics);
+        Transport truck2 = new Truck("truck2", "truck2", 5.8, driverC2, LoadCapacity.N1,mechanics);
 
 
         List<Transport> racers = new ArrayList<>();
@@ -90,12 +98,22 @@ public class Main {
         for (Transport transport : racers) {
             System.out.println(transport + " " + transport.getDriver() + " " + transport.getMechanic());
         }
+        mechanic1.maintenance();
+        mechanic2.carRepairs();
 
-
+        Queue<Object> vehicle = new LinkedList<>();
+        vehicle.add(bus1);
+        vehicle.add(bus2);
+        vehicle.add(сar1);
+        vehicle.add(car2);
+        vehicle.add(truck1);
+        vehicle.add(truck2);
+        System.out.println(vehicle);
 
     }
 
+
     private static void printInfo(Transport<?> transport) {
-        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " Б и будет учавствовать в заезде");
+        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + "  и будет учавствовать в заезде");
     }
 }

@@ -26,6 +26,12 @@ public class Mechanic {
     public void setCompany(String company) {
         this.company = company;
     }
+    public void maintenance(){
+        System.out.println("Механик " + getName() + " из компании " + getCompany() + " проводит техобслуживание." );
+    }
+    public void carRepairs(){
+        System.out.println("Механик " + getName() + " из компании " + getCompany() + " чинит машину." );
+    }
 
     @Override
     public String toString() {

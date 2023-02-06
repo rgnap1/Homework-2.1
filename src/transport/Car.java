@@ -6,7 +6,7 @@ public class Car extends Transport <DriverB>{
     private Type type;
 
     public Car(String brand, String model, double engineVolume1, DriverB driver, Type type, List<Mechanic> mechanic) {
-        super(brand, model, engineVolume1, driver, List<Mechanic> mechanic);
+        super(brand, model, engineVolume1, driver, mechanic);
         this.type = type;
     }
 

@@ -6,7 +6,7 @@ public class Truck extends Transport<DriverC>{
     private LoadCapacity loadCapacity;
 
     public Truck(String brand, String model, double engineVolume1, DriverC driver,LoadCapacity loadCapacity,List<Mechanic> mechanic) {
-        super(brand, model, engineVolume1, driver, (List<Mechanic>) mechanic);
+        super(brand, model, engineVolume1, driver, mechanic);
         this.loadCapacity = loadCapacity;
     }
 

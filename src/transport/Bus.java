@@ -6,7 +6,7 @@ public class Bus extends Transport <DriverD>{
     private Size size;
 
     public Bus(String brand, String model, double engineVolume1, DriverD driver, Size size, List<Mechanic> mechanic) {
-        super(brand, model, engineVolume1, driver, List<Mechanic> mechanic);
+        super(brand, model, engineVolume1, driver,  mechanic);
         this.size = size;
     }
 
