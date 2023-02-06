@@ -1,5 +1,6 @@
 import transport.*;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,18 +36,17 @@ public class Main {
                     3.0,
                     driverD,
                     Size.getValue(60),
-                    new Mechanic("Михалыч", "ГРУЗОВИЧКОФФ")
+
 
             );
             printInfo(car);
             printInfo(truck);
             printInfo(bus);
             car.toString();
-            car.goDiagnostics();
-            truck.goDiagnostics();
-            //           bus.goDiagnostics();
             try {
-                throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
+                car.goDiagnostics();
+                bus.goDiagnostics();
+                truck.goDiagnostics();
             } catch (TransportTypeException e) {
                 System.err.println(e.getMessage());
             }
@@ -64,12 +64,20 @@ public class Main {
         Mechanic mechanic2 = new Mechanic("Рябчиков", "Get Taxi");
         Mechanic mechanic3 = new Mechanic("Михалыч", "ГРУЗОВИЧКОФФ");
 
-        Transport bus1 = new Bus("bus1", "bus1", 6.0, driverD1, Size.MIDDLE, mechanic1);
-        Transport bus2 = new Bus("bus2", "bus2", 7.4, driverD2, Size.SUPER_BIG, mechanic1);
-        Transport сar1 = new Car("car1", "car1", 3.5, driverB1, Type.CROSSOVER, mechanic2);
-        Transport car2 = new Car("car2", "car2", 2.6, driverB2, Type.SEDAN, mechanic2);
-        Transport truck1 = new Truck("truck1", "truck1", 6.0, driverC1, LoadCapacity.N2, mechanic3);
-        Transport truck2 = new Truck("truck2", "truck2", 5.8, driverC2, LoadCapacity.N1, mechanic3);
+        List<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(mechanic1);
+        mechanics.add(mechanic2);
+        mechanics.add(mechanic3);
+        for (Mechanic mechanic : mechanics){
+            System.out.println(mechanic);
+        }
+
+        Transport bus1 = new Bus("bus1", "bus1", 6.0, driverD1, Size.MIDDLE,);
+        Transport bus2 = new Bus("bus2", "bus2", 7.4, driverD2, Size.SUPER_BIG,);
+        Transport сar1 = new Car("car1", "car1", 3.5, driverB1, Type.CROSSOVER, );
+        Transport car2 = new Car("car2", "car2", 2.6, driverB2, Type.SEDAN, );
+        Transport truck1 = new Truck("truck1", "truck1", 6.0, driverC1, LoadCapacity.N2, );
+        Transport truck2 = new Truck("truck2", "truck2", 5.8, driverC2, LoadCapacity.N1, );
 
 
         List<Transport> racers = new ArrayList<>();

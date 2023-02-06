@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport <T extends Driver> implements Competing{
@@ -7,14 +9,14 @@ public abstract class Transport <T extends Driver> implements Competing{
     private final String model;
     private double engineVolume1;
     private T driver;
-    private Mechanic mechanic;
+    private List <Mechanic> mechanic;
 
 
-    public Transport(String brand, String model, double engineVolume1, T driver,Mechanic mechanic) {
+    public Transport(String brand, String model, double engineVolume1, T driver,List<Mechanic> mechanic) {
         this.brand = (brand == null || brand.isBlank() ? "default" : brand);
         this.model = (model == null || model.isBlank() ? "default" : model);
         this.engineVolume1 = (engineVolume1  < 0 || engineVolume1 == 0 ? 3 : engineVolume1);
-        setMechanic(mechanic);
+        this.mechanic = new ArrayList<>(mechanic);
         setDriver(driver);
     }
 
@@ -32,6 +34,14 @@ public abstract class Transport <T extends Driver> implements Competing{
         this.engineVolume1 = engineVolume1;
     }
 
+    public List<Mechanic> getMechanic() {
+        return mechanic;
+    }
+
+    public void setMechanic(List<Mechanic> mechanic) {
+        this.mechanic = mechanic;
+    }
+
     public T getDriver() {
         return driver;
     }
@@ -40,13 +50,7 @@ public abstract class Transport <T extends Driver> implements Competing{
         this.driver = driver;
     }
 
-    public Mechanic getMechanic() {
-        return mechanic;
-    }
 
-    public void setMechanic(Mechanic mechanic) {
-        this.mechanic = mechanic;
-    }
 
     public abstract void startMove();
     public abstract void finishMove();

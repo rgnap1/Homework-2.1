@@ -1,10 +1,12 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport <DriverB>{
     private Type type;
 
-    public Car(String brand, String model, double engineVolume1, DriverB driver,Type type,Mechanic mechanic) {
-        super(brand, model, engineVolume1, driver,mechanic);
+    public Car(String brand, String model, double engineVolume1, DriverB driver, Type type, List<Mechanic> mechanic) {
+        super(brand, model, engineVolume1, driver, List<Mechanic> mechanic);
         this.type = type;
     }
 
@@ -24,7 +26,7 @@ public class Car extends Transport <DriverB>{
     }
 
     @Override
-    public void goDiagnostics() {
+    public void goDiagnostics() throws TransportTypeException {
         System.out.println("Машины проходят диагностику");
     }
     @Override
