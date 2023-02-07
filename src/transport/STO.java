@@ -4,7 +4,7 @@ import java.util.Queue;
 
 public class STO {
 private Transport transport;
-Queue<Transport> queue;
+private Queue<Transport> queue;
 
     public STO(Transport transport) {
         this.transport = transport;

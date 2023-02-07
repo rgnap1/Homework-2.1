@@ -52,12 +52,21 @@ public class Main {
             printInfo(bus);
             car.toString();
             try {
-                car.goDiagnostics();
-                bus.goDiagnostics();
                 truck.goDiagnostics();
             } catch (TransportTypeException e) {
                 System.err.println(e.getMessage());
             }
+            try {
+                car.goDiagnostics();
+            } catch (TransportTypeException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                bus.goDiagnostics();
+            } catch (TransportTypeException e) {
+                System.err.println(e.getMessage());
+            }
+
 
         }
         DriverD driverD1 = new DriverD("Автобусиков", true, 5);
@@ -109,6 +118,19 @@ public class Main {
         vehicle.add(truck1);
         vehicle.add(truck2);
         System.out.println(vehicle);
+
+        Map<Object, List<Mechanic>> carAndMechanics = new HashMap<>();
+        carAndMechanics.put(сar1,mechanics);
+        carAndMechanics.put(car2,mechanics);
+        System.out.println(carAndMechanics);
+
+        for (Map.Entry<Object,List<Mechanic>> entry : carAndMechanics.entrySet()){
+            System.out.println("Ключ : " + entry.getKey() + " Значение : " + entry.getValue());
+        }
+
+
+
+
 
     }
 
