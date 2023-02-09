@@ -136,8 +136,8 @@ public class Main {
         drivers.add(driverD1);
         drivers.add(driverD2);
         System.out.println(drivers);
-        if (drivers.contains(driverB1)){
-            System.out.println("Водитель с таким именем уже есть в списке!");
+        if (drivers.contains(driverB1) || drivers.contains(driverB2) || drivers.contains(driverC1) || drivers.contains(driverC2) || drivers.contains(driverD1) || drivers.contains(driverD2)){
+            System.err.println("Водитель с таким именем уже есть в списке!");
         }
         drivers.add(driverB1);
         Iterator<Object> iterDrivers = drivers.iterator();
