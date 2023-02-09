@@ -128,6 +128,24 @@ public class Main {
             System.out.println("Ключ : " + entry.getKey() + " Значение : " + entry.getValue());
         }
 
+        Set<Object> drivers = new HashSet<>();
+        drivers.add(driverB1);
+        drivers.add(driverB2);
+        drivers.add(driverC1);
+        drivers.add(driverC2);
+        drivers.add(driverD1);
+        drivers.add(driverD2);
+        System.out.println(drivers);
+        if (drivers.contains(driverB1)){
+            System.out.println("Водитель с таким именем уже есть в списке!");
+        }
+        drivers.add(driverB1);
+        Iterator<Object> iterDrivers = drivers.iterator();
+        while (iterDrivers.hasNext()){
+            System.out.println(iterDrivers.next());
+        }
+
+
 
 
 
