@@ -1,7 +1,5 @@
 package hw;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -39,7 +37,9 @@ public class Main2 {
         };
 
         Function<Double, Long> function1 = x -> Math.round(x);
-
+        Function<Double, Long> function2 = x -> Math.round(x)/2;
+        Predicate<Double> predicate2 = x -> x < 0;
+        System.out.println(ternaryOperator(predicate2, function1, function2).apply(-20.3));
 
         Supplier<Integer> supplier = new Supplier<Integer>() {
             @Override
@@ -59,4 +59,6 @@ public class Main2 {
     ){
         return x -> condition.test(x) ? ifTrue.apply(x) : ifFalse.apply(x);
     }
+
+
 }
