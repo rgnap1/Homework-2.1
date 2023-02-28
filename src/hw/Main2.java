@@ -41,6 +41,7 @@ public class Main2 {
         Predicate<Double> predicate2 = x -> x < 0;
         System.out.println(ternaryOperator(predicate2, function1, function2).apply(-20.3));
 
+
         Supplier<Integer> supplier = new Supplier<Integer>() {
             @Override
             public Integer get() {
